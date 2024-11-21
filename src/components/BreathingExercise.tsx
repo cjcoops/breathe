@@ -51,6 +51,13 @@ const BreathingExercise: React.FC = () => {
     setBreathPhase("normal");
   };
 
+  const cancelBreathing = (): void => {
+    setIsPlaying(false);
+    setCurrentBreath(0);
+    setCurrentRound(1);
+    setBreathPhase("normal");
+  };
+
   useEffect(() => {
     let timer: number;
 
@@ -176,8 +183,8 @@ const BreathingExercise: React.FC = () => {
           </select>
         </div>
 
-        <button onClick={startBreathing} disabled={isPlaying}>
-          Start Breathing Exercise
+        <button onClick={isPlaying ? cancelBreathing : startBreathing}>
+          {isPlaying ? "Cancel" : "Start"}
         </button>
       </div>
 
